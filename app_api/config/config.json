@@ -2,7 +2,7 @@
     "development": {
         "username": "root"
         , "password": "root"
-        , "database": "sqlizedb"
+        , "database": "ierdb"
         , "host": "localhost"
         , "dialect": "mysql"
     }
