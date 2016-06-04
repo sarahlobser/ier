@@ -3,11 +3,7 @@ var bcrypt = require('bcrypt');
 const saltRounds = 13;
 
 module.exports.index = function(req,res){
-	models.User.findAll({
-		include : [{
-			model : models.Task
-		}]
-	})
+	models.User.findAll()
 		.then(function(users){
 			res.send(users);
 		})
@@ -19,11 +15,7 @@ module.exports.index = function(req,res){
 };
 
 module.exports.show = function(req,res){
-	models.User.findById(req.params.id, {
-		include : [{
-			model : models.Task
-		}]
-	})
+	models.User.findById(req.params.id)
 		.then(function(user){
 			res.send(user);
 		})
@@ -32,10 +24,11 @@ module.exports.show = function(req,res){
 module.exports.create = function(req,res) {
 	var user = req.body;
     var rawPassword = user.password;
+    console.log(user.email);
 
     bcrypt.hash(rawPassword, saltRounds, function(err,hash){
         models.User.create({
-            username : user.username,
+            email : user.email,
             password : hash
         })
             .then(function(user) {

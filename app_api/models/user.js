@@ -22,14 +22,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull : false,
             defaultValue: 0
-        },
-        title : {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        bio : {
-            type: DataTypes.STRING,
-            allowNull: true
         }
     },{
         classMethods: {
