@@ -4,5 +4,8 @@ var productCtrl = require('../controllers/productCtrl');
 
 router.get('/', productCtrl.index);
 router.get('/:id', productCtrl.show);
+router.post('/', productCtrl.create);
+router.delete('/:id', productCtrl.destroy);
+router.put('/:id', productCtrl.update);
 
 module.exports = router;
