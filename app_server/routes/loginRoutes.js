@@ -5,6 +5,7 @@ var loginCtrl = require('../controllers/loginCtrl');
 router.get('/', loginCtrl.home);
 router.get('/login', loginCtrl.login);
 router.post('/authenticate', loginCtrl.authenticate);
+router.post('/empAuthenticate', loginCtrl.empAuthenticate);
 router.get('/signup', loginCtrl.signup);
 router.post('/register', loginCtrl.register);
 router.get('/logout', loginCtrl.logout);
