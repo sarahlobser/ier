@@ -1,3 +1,13 @@
+<h2>This is what's in your cart, sucka</h2>
+<ul>
+    {{#each cartitems}}
+    <li>
+        {{this.id}}
+        {{this.name}}
+        {{this.description}}
+    </li>
+    {{/each}}
+</ul>
 {{product.id}}
 {{product.name}}
 {{product.description}}
