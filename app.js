@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var cookie = require('cookie-parser');
 var session = require('express-session');
-//var secret = require('./credentials').secret;
+
 var passportConfig = require('./config/passportConfig');
 var bp = require('body-parser');
 var handlebars = require('express-handlebars');
@@ -26,7 +26,7 @@ app.use(session({
     resave: false
     , saveUninitialized: false
     , secret: secret
-    , key: 'username'
+    , key: 'user'
 }));
 
 app.set('views', 'app_server/views');
