@@ -3,8 +3,8 @@ var models = require('../models');
 module.exports.index = function(req,res) {
     models.Product.findAll()
         .then(function(products){
-//            res.send(products);
-            res.render('products', {products:products});
+            res.json(products);
+//            res.render('products', {products:products});
         })
         .catch(function(err) {
             console.error(err);
@@ -17,8 +17,8 @@ module.exports.show = function(req, res) {
     console.log(req.params.id);
     models.Product.findById(req.params.id)
         .then(function(product){
-//            res.send(product);
-            res.render('products', {product:product})
+            res.json(product);
+//            res.render('products', {product:product})
         })
         .catch(function(err) {
             console.error(err);
