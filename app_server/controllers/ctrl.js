@@ -43,7 +43,6 @@ module.exports.addToCart = function(req, res) {
 module.exports.emptyCart = function(req, res) {
     console.log("in empty cart");
     if(req.signedCookies.cart) {
-        //cart = [];
         var cart = req.signedCookies.cart;
         console.log("cart has " + cart.length + " it");
         while(cart.length > 0) {
