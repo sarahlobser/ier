@@ -30,6 +30,7 @@ app.use(session({
 }));
 
 app.set('views', 'app_server/views');
+app.use(express.static(__dirname + '/public'));
 app.engine('handlebars', handlebars({
     defaultLayout: '../../app_server/views/layouts/main'
 }));
