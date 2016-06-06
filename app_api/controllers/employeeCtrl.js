@@ -5,7 +5,8 @@ const saltRound = 13;
 module.exports.index = function (req, res) {
     models.Employee.findAll()
         .then(function (employees) {
-            res.send(employees);
+            //res.send(employees);
+            res.render('employees', {employees:employees});
         })
         .catch(function (err) {
             console.error(err);
@@ -18,7 +19,8 @@ module.exports.index = function (req, res) {
 module.exports.show = function (req, res) {
     models.Employee.findById(req.params.id)
         .then(function (employee) {
-            res.send(employee);
+            //res.send(employee);
+            res.render('employees', {employee:employee});
         })
         .catch(function (err) {
             console.error(err);

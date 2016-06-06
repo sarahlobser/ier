@@ -1,0 +1,15 @@
+{{employee.title}}
+{{employee.name}}
+{{employee.email}}
+{{employee.bio}}
+
+<ul>
+    {{#each employees}}
+    <li>
+        {{this.title}}
+        {{this.name}}
+        {{this.email}}
+        {{this.bio}}
+    </li>
+    {{/each}}
+</ul>
