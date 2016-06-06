@@ -2,23 +2,26 @@
 <ul>
     {{#each cartitems}}
     <li>
-        {{this.id}}
-        {{this.name}}
-        {{this.description}}
+    <h2>{{this.name}}, from {{this.brand}}</h2>
+    <h3>{{this.category}}</h3>
     </li>
     {{/each}}
 </ul>
 {{product.id}}
 {{product.name}}
 {{product.description}}
-<button>This is a button</button>
+
 
 <ul>
 {{#each products}}
 <li>
-    {{this.id}}
-    {{this.name}}
-    {{this.description}}
+    <h2>{{this.name}}, from {{this.brand}}</h2>
+    <h3>{{this.category}}</h3>
+    <p>{{this.description}}</p>
+    <p>Rating: {{this.rating}}</p>
+    <h4>Only ${{this.price}}</h4>
+    <button><a href="/products/cart/{{this.id}}">Add to Cart</a></button>
+    <p>Only {{this.quantity}} left!</p>
 </li>
 {{/each}}
 </ul>
