@@ -42,8 +42,10 @@ var models = require('./app_api/models');
 
 app.use('/', require('./app_server/routes/loginRoutes'));
 app.use('/users', require('./app_api/routes/userRoutes'));
-app.use('/products', require('./app_api/routes/productRoutes'));
+app.use('/products', require('./app_server/routes/routes'));
 app.use('/employees', require('./app_api/routes/employeeRoutes'));
+
+app.use('/api/products', require('./app_api/routes/productRoutes'));
 
 models.sequelize.sync()
     .then(function () {
