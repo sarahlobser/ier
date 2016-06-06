@@ -26,6 +26,7 @@ app.use(session({
     resave: false
     , saveUninitialized: false
     , secret: secret
+    , key: 'username'
 }));
 
 app.set('views', 'app_server/views');
