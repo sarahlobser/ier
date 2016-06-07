@@ -24,7 +24,9 @@ module.exports.authenticate = function (req, res, next) {
         }
         req.login(user, function (err) {
             req.session.user = user;
-            return res.render('index', {user:user});
+            return res.render('index', {
+                user: user
+            });
         })
     })(req, res);
 };
@@ -50,12 +52,16 @@ module.exports.register = function (req, res) {
         models.User.create({
                 email: req.body.email
                 , password: hash
+                , first_name: req.body.first_name
+                , last_name: req.body.last_name
             })
             .then(function (user) {
                 console.log(req.body.email);
                 req.login(user, function (err) {
                     req.session.username = user.email;
-                    return res.render('index', {user: user});
+                    return res.render('index', {
+                        user: user
+                    });
                 })
             });
     });
