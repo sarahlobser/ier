@@ -4,10 +4,12 @@ var express = require('express');
 var router = express.Router();
 var userCtrl = require('../controllers/userCtrl');
 
-router.get('/', userCtrl.index);
-router.get('/:id', userCtrl.show);
-router.post('/', userCtrl.create);
+router.put('/update/:id', userCtrl.update);
 router.delete('/:id', userCtrl.destroy);
-router.put('/:id', userCtrl.update);
+router.get('/:id', userCtrl.show);
+router.get('/', userCtrl.index);
+router.post('/', userCtrl.create);
+
+
 
 module.exports = router;

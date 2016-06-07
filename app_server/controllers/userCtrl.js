@@ -16,7 +16,7 @@ module.exports.view = function (req, res) {
 };
 
 module.exports.update = function (req, res) {
-    request.get('http://localhost:3000/api/users/' + req.params.id, function (error, response, body) {
+    request.put('http://localhost:3000/api/users/update/' + req.params.id, function (error, response, body) {
         if (!error) {
             res.render('profile', {
                 user: req.user
