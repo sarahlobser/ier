@@ -66,18 +66,18 @@ module.exports.addToCart = function (req, res) {
                 res.cookie('cart', cart, {
                     signed: true
                 });
-                res.render('products', {
+                res.render('cart', {
                     user: req.user
-                    , cartitems: cart
+                    , cart : cart
                 });
             } else {
                 cart.push(product);
                 res.cookie('cart', cart, {
                     signed: true
                 });
-                res.render('products', {
+                res.render('cart', {
                     user: req.user
-                    , cartitems: cart
+                    , cart : cart
                 });
             }
         });
