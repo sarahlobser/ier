@@ -84,7 +84,6 @@ module.exports.addToCart = function (req, res) {
 };
 
 module.exports.emptyCart = function (req, res) {
-    console.log("in empty cart");
     if (req.signedCookies.cart) {
         var cart = req.signedCookies.cart;
         console.log("cart has " + cart.length + " it");
@@ -94,5 +93,5 @@ module.exports.emptyCart = function (req, res) {
 
     }
     res.clearCookie('cart');
-    res.send('Cart has been emptied...sucka');
+    res.render('cart', {message : "Your cart is empty"});
 };

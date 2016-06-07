@@ -1,9 +1,14 @@
+<h2>Your Cart</h2>
+{{message}}
 <ul>
-    {{#each products}}
+    {{#each cart}}
     <li>
         {{this.name}}
         {{this.price}}
+        <a class="btn btn-success" href="/cart/{{this.id}}">Remove From Cart</a>
     </li>
     {{/each}}
 </ul>
-<button>Checkout</button>
+<a class="btn btn-success">Checkout</a>
+<a class="btn btn-success" href="/products/">Continue Shopping</a>
+<a class="btn btn-success" href="/products/cart">Empty Cart</a>
