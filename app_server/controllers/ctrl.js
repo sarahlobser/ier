@@ -25,6 +25,30 @@ module.exports.show = function (req, res) {
             res.sendStatus(500);
         }
     })
+};
+
+module.exports.getCategory = function(req, res) {
+    request.get('http://localhost:3000/api/products/category/' + req.params.category, function (error, response, body) {
+        if (!error) {
+            res.render('products', {
+                products: JSON.parse(body)
+            });
+        } else {
+            res.sendStatus(500);
+        }
+    })
+}
+
+module.exports.showEditableProduct = function (req, res) {
+    request.get('http://localhost:3000/api/products/' + req.params.id, function (error, response, body) {
+        if (!error) {
+            res.render('employeeProduct', {
+                product: JSON.parse(body)
+            });
+        } else {
+            res.sendStatus(500);
+        }
+    })
 }
 
 module.exports.addToCart = function (req, res) {

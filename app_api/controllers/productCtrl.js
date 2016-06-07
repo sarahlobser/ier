@@ -27,6 +27,24 @@ module.exports.show = function(req, res) {
         });
 };
 
+module.exports.showCategory = function(req, res) {
+    console.log("in show category method");
+    var cat = req.params.category;
+    models.Product.findAll({
+        where : {
+            category : cat
+        }
+    })
+    .then(function(products){
+        res.json(products);
+    })
+    .catch(function(err){
+        console.error(err);
+        res.status(500);
+        res.send(err);
+    });
+};
+
 module.exports.create = function(req,res) {
     var product = req.body;
     models.Product.create(product)
