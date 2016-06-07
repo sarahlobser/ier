@@ -5,7 +5,7 @@ const saltRounds = 13;
 
 module.exports.home = function (req, res) {
     res.render('index', {
-        user: req.session.user
+        user: req.user
     });
 };
 
@@ -30,18 +30,6 @@ module.exports.authenticate = function (req, res, next) {
         })
     })(req, res);
 };
-// EMPLOYEE AUTHENTICATION TABLE
-//module.exports.authenticate = function (req, res) {
-//    console.log(req.body);
-//    passportConfig.authenticate('local', function (err, employee, info) {
-//        if (err || !employee) {
-//            return res.redirect('/login');
-//        }
-//        req.login(user, function (err) {
-//            return res.redirect('/');
-//        })
-//    })(req, res);
-//};
 
 module.exports.signup = function (req, res) {
     res.render('signup');
@@ -68,6 +56,8 @@ module.exports.register = function (req, res) {
 };
 
 module.exports.logout = function (req, res) {
+    console.log("in logout");
+    console.log(req.user);
     req.logout();
-    res.redirect('/login');
+    res.redirect('/');
 }
