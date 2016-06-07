@@ -14,3 +14,7 @@ module.exports.view = function (req, res) {
         }
     })
 };
+
+module.exports.update = function (req, res) {
+    request.get('http://localhost:3000/api/users/')
+}
