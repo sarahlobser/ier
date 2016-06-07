@@ -18,7 +18,7 @@ module.exports.getAll = function (req, res) {
 module.exports.show = function (req, res) {
     request.get('http://localhost:3000/api/products/' + req.params.id, function (error, response, body) {
         if (!error) {
-            res.render('products', {
+            res.render('product', {
                 product: JSON.parse(body)
             });
         } else {
