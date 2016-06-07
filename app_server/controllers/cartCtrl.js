@@ -10,6 +10,7 @@ module.exports.index = function (req, res) {
 
 module.exports.removeProduct = function (req, res) {
     var productId = req.params.id;
+    console.log(req.signedCookies.cart.length);
     if (req.signedCookies.cart) {
         var cart = req.signedCookies.cart;
         for (var i = 0; i < cart.length; i++) {
