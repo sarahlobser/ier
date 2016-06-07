@@ -96,3 +96,16 @@ module.exports.emptyCart = function (req, res) {
     res.clearCookie('cart');
     res.send('Cart has been emptied...sucka');
 };
+
+ module.exports.edit = function (req, res) {
+     request.get('http://localhost:3000/api/products/' + req.params.id, function (error, response, body) {
+         if (!error) {
+             res.render('edit', {
+                 user: req.user
+                 , product: JSON.parse(body)
+             });
+         } else {
+             res.sendStatus(500);
+         }
+     })
+ };
