@@ -27,7 +27,19 @@ module.exports.show = function (req, res) {
     })
 };
 
-module.exports.show = function (req, res) {
+module.exports.getCategory = function(req, res) {
+    request.get('http://localhost:3000/api/products/category/' + req.params.category, function (error, response, body) {
+        if (!error) {
+            res.render('products', {
+                products: JSON.parse(body)
+            });
+        } else {
+            res.sendStatus(500);
+        }
+    })
+}
+
+module.exports.showEditableProduct = function (req, res) {
     request.get('http://localhost:3000/api/products/Employee/' + req.params.id, function (error, response, body) {
         if (!error) {
             res.render('employeeProduct', {

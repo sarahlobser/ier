@@ -32,7 +32,7 @@ module.exports.showCategory = function(req, res) {
     var cat = req.params.category;
     models.Product.findAll({
         where : {
-            category : 'skydiving'
+            category : cat
         }
     })
     .then(function(products){
