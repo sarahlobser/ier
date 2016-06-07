@@ -27,6 +27,18 @@ module.exports.show = function (req, res) {
     })
 }
 
+module.exports.show = function (req, res) {
+    request.get('http://localhost:3000/api/products/Employee/' + req.params.id, function (error, response, body) {
+        if (!error) {
+            res.render('employeeProduct', {
+                product: JSON.parse(body)
+            });
+        } else {
+            res.sendStatus(500);
+        }
+    })
+}
+
 module.exports.addToCart = function (req, res) {
     var product = models.Product.findById(req.params.id)
         .then(function (product) {
