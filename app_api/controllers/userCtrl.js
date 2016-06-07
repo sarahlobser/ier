@@ -30,6 +30,8 @@ module.exports.create = function (req, res) {
         models.User.create({
                 email: user.email
                 , password: hash
+                , first_name: user.first_name
+                , last_name: user.last_name
             })
             .then(function (user) {
                 res.sendStatus(201);
@@ -60,8 +62,19 @@ module.exports.destroy = function (req, res) {
 
 module.exports.update = function (req, res) {
     var updatedUser = req.body;
-    models.User.upsert(updatedUser)
-        .then(function () {
-            res.sendStatus(202);
-        });
+    bcrypt.hash(updatedUser.password, saltRounds, function (err, hash) {
+        models.User.upsert({
+                email: updatedUser.email
+                , password: hash
+                , first_name: updatedUser.first_name
+                , last_name: updatedUser.last_name
+            })
+            .then(function () {
+                res.sendStatus(202);
+            })
+            .catch(function (err) {
+                res.status(500);
+                res.send('InternalServerError: User not created');
+            });
+    });
 };
