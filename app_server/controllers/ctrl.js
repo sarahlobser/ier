@@ -40,7 +40,7 @@ module.exports.getCategory = function(req, res) {
 }
 
 module.exports.showEditableProduct = function (req, res) {
-    request.get('http://localhost:3000/api/products/Employee/' + req.params.id, function (error, response, body) {
+    request.get('http://localhost:3000/api/products/' + req.params.id, function (error, response, body) {
         if (!error) {
             res.render('employeeProduct', {
                 product: JSON.parse(body)
