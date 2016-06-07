@@ -25,7 +25,7 @@ module.exports.show = function (req, res) {
             res.sendStatus(500);
         }
     })
-}
+};
 
 module.exports.addToCart = function (req, res) {
     var product = models.Product.findById(req.params.id)
