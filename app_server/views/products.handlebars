@@ -51,7 +51,7 @@
             {{#each products}}
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
+                    <img src="{{this.category}}{{this.id}}.jpg" alt="">
                     <div class="caption">
                         <h6><a href="/products/{{this.id}}">{{this.name}}</a>
                                 </h6>
