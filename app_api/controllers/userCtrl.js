@@ -62,6 +62,8 @@ module.exports.destroy = function (req, res) {
 
 module.exports.update = function (req, res) {
     var updatedUser = req.body;
+    console.log(req.body);
+    console.log(updatedUser.email + " " + updatedUser.password + " is the updated user in api");
     bcrypt.hash(updatedUser.password, saltRounds, function (err, hash) {
         models.User.upsert({
                 email: updatedUser.email
@@ -69,7 +71,8 @@ module.exports.update = function (req, res) {
                 , first_name: updatedUser.first_name
                 , last_name: updatedUser.last_name
             })
-            .then(function () {
+            .then(function (bool) {
+                console.log(bool);
                 res.sendStatus(202);
             });
     });

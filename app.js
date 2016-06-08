@@ -4,9 +4,10 @@ var cookie = require('cookie-parser');
 var session = require('express-session');
 
 var passportConfig = require('./config/passportConfig');
-var bp = require('body-parser');
+
 var handlebars = require('express-handlebars');
 var port = process.env.PORT || 3000;
+var bp = require('body-parser');
 
 var secret;
 if (process.env.SECRET) {
