@@ -44,7 +44,7 @@
                     <script>
                         console.log(location.pathname)
                         if (location.pathname.length == 1) {
-                            document.write('<span class="light">Welcome to</span> BLAH')
+                            document.write('<span class="light">Welcome to</span> IER')
                         } else {
                             document.write('<span class="light">Go</span> HOME')
                         }
@@ -64,11 +64,9 @@
                         <a class="page-scroll" href="/products">Shop</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/employees">Our Team</a>
+                        <a class="page-scroll" href="/cart">View Cart</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
+                    
                     {{#if user}}
                     <li>
                         <a class="page-scroll" href="/users/{{user.email}}">
@@ -90,6 +88,13 @@
                         <a class="page-scroll" href="/signup">Signup</a>
                     </li>
                     {{/if}}
+                    <li>
+                        <a class="page-scroll" href="/employees">Our Team</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
