@@ -56,28 +56,34 @@ module.exports.showEditableProduct = function (req, res) {
 }
 
 module.exports.addToCart = function (req, res) {
+    var totalPrice = 0;
     var product = models.Product.findById(req.params.id)
         .then(function (product) {
-            console.log("HELLO")
             var cart = [];
             if (req.signedCookies.cart) {
                 cart = req.signedCookies.cart;
                 cart.push(product);
+                for (var i = 0; i < cart.length; i++) {
+                    totalPrice += cart[i].price;
+                }
                 res.cookie('cart', cart, {
                     signed: true
                 });
                 res.render('cart', {
                     user: req.user
                     , cart : cart
+                    , totalPrice : totalPrice
                 });
             } else {
                 cart.push(product);
+                totalPrice = product.price;
                 res.cookie('cart', cart, {
                     signed: true
                 });
                 res.render('cart', {
                     user: req.user
                     , cart : cart
+                    , totalPrice : totalPrice
                 });
             }
         });
