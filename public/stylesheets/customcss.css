@@ -1,3 +1,16 @@
 .customp {
     font-size: .75em;
 }
+
+.empBlock {
+    padding: 2em;
+    margin: 2em;
+}
+
+.bio {
+    font-size: 1em;
+}
+
+.cart-item {
+    margin: 1em;
+}

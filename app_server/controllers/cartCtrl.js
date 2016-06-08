@@ -2,7 +2,12 @@ var models = require('../../app_api/models');
 
 module.exports.index = function (req, res) {
             if (req.signedCookies.cart) {
-                res.render('cart', {cart: req.signedCookies.cart});
+                var totalPrice = 0;
+                var cart = req.signedCookies.cart;
+                for (var i = 0; i < cart.length; i++) {
+                    totalPrice += cart[i].price;
+                }
+                res.render('cart', {cart: req.signedCookies.cart, totalPrice: totalPrice});
             } else {
                 res.render('cart', {message: "Your cart is empty"});
             }

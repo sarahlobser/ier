@@ -62,6 +62,7 @@ module.exports.addToCart = function (req, res) {
             var cart = [];
             if (req.signedCookies.cart) {
                 cart = req.signedCookies.cart;
+                
                 cart.push(product);
                 for (var i = 0; i < cart.length; i++) {
                     totalPrice += cart[i].price;
@@ -76,6 +77,11 @@ module.exports.addToCart = function (req, res) {
                 });
             } else {
                 cart.push(product);
+                for (var i = 0; i < cart.length; i++) {
+                    if (!cart[i].orderQuantity) {
+                        cart[i].orderQuantity = 1;
+                    }
+                }
                 totalPrice = product.price;
                 res.cookie('cart', cart, {
                     signed: true
@@ -99,7 +105,7 @@ module.exports.emptyCart = function (req, res) {
 
     }
     res.clearCookie('cart');
-    res.render('cart', {message : "Your cart is empty"});
+    res.render('cart', {message : "Your cart is empty. Continue shopping to add some INTENSE experiences to your cart!", totalPrice: "0"});
 };
 
  module.exports.editProduct = function (req, res) {

@@ -60,18 +60,13 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="/products">Shop</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="/cart">View Cart</a>
-                    </li>
+                    
                     
                     {{#if user}}
                     <li>
                         <a class="page-scroll" href="/users/{{user.email}}">
                         {{#if user.first_name}}
-                        {{user.first_name}}
+                        Logged in as: {{user.first_name}}
                         {{else}}
                         {{user.email}}
                         {{/if}}
@@ -88,6 +83,12 @@
                         <a class="page-scroll" href="/signup">Signup</a>
                     </li>
                     {{/if}}
+                    <li>
+                        <a class="page-scroll" href="/products">Shop</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cart">View Cart</a>
+                    </li>
                     <li>
                         <a class="page-scroll" href="/employees">Our Team</a>
                     </li>
