@@ -96,10 +96,10 @@ module.exports.emptyCart = function (req, res) {
     res.render('cart', {message : "Your cart is empty"});
 };
 
- module.exports.edit = function (req, res) {
+ module.exports.editProduct = function (req, res) {
      request.get('http://localhost:3000/api/products/' + req.params.id, function (error, response, body) {
          if (!error) {
-             res.render('edit', {
+             res.render('editProduct', {
                  user: req.user
                  , product: JSON.parse(body)
              });
@@ -107,4 +107,32 @@ module.exports.emptyCart = function (req, res) {
              res.sendStatus(500);
          }
      })
+ };
+
+ module.exports.update = function (req, res) {
+   console.log(req.body);
+     var productToUpdate = JSON.stringify({
+             id : req.params.id,
+             category : req.body.category,
+             price : Number(req.body.price),
+             description : req.body.description,
+             rating : Number(req.body.rating),
+             brand : req.body.brand,
+             name : req.body.name,
+             quantity : Number(req.body.quantity)
+
+         });
+        console.log(productToUpdate);
+     request.put({
+         url : 'http://localhost:3000/api/products/' + req.params.id,
+         headers : {'Content-type' : 'application/json'},
+         body : productToUpdate
+     }, function(error, response, body) {
+         if(!error) {
+             res.redirect('/products/' + req.params.id);
+         } else {
+             console.log(error);
+             res.redirect('/products');
+         }
+     });
  };
