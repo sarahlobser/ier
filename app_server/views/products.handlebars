@@ -26,19 +26,19 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img class="slide-image" src="/images/skydiving.jpeg" style="width:1000px;height:400px" alt="">
+                            <img class="slide-image" src="/images/skydiving.jpeg" style="width:1000px;height:500px" alt="">
                         </div>
                         <div class="item">
-                            <img class="slide-image" src="/images/mountaineering.jpg" style="width:1000px;height:400px" alt="">
+                            <img class="slide-image" src="/images/mountaineering.jpg" style="width:1000px;height:500px" alt="">
                         </div>
                         <div class="item">
-                            <img class="slide-image" src="/images/heliskiing.jpg" style="width:1000px;height:400px" alt="">
+                            <img class="slide-image" src="/images/heliskiing.jpg" style="width:1000px;height:500px" alt="">
                         </div>
                         <div class="item">
-                            <img class="slide-image" src="/images/diving.jpg" style="width:1000px;height:400px" alt="">
+                            <img class="slide-image" src="/images/diving.jpg" style="width:1000px;height:500px" alt="">
                         </div>
                         <div class="item">
-                            <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                            <img class="slide-image" src="/images/bikingcarousel.jpg" style="width:1000px;height:500px" alt="">
                         </div>
                     </div>
                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -59,7 +59,7 @@
             {{#each products}}
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
+                    <img src="{{this.category}}{{this.id}}.jpg" alt="">
                     <div class="caption">
                         <h6><a href="/products/{{this.id}}">{{this.name}}</a>
                                 </h6>
