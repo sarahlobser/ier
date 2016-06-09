@@ -23,7 +23,7 @@ module.exports.getAll = function (req, res) {
 };
 
 module.exports.show = function (req, res) {
-    request.get(appUri + 'api/products/' + req.params.id, function (error, response, body) {
+    request.get(appURI + 'api/products/' + req.params.id, function (error, response, body) {
         if (!error) {
             res.render('product', {
                 user: req.user
