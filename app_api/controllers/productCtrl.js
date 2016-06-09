@@ -1,12 +1,24 @@
 var models = require('../models');
 
 module.exports.index = function(req,res) {
+    console.log("***********************************************")
+    console.log("IN PRODUCTS INDEX ROUTE!!!!!")
+    console.log("***********************************************")
+    console.log("***********************************************")
     models.Product.findAll()
         .then(function(products){
+    console.log("***********************************************")
+    console.log("IN PRODUCTS INDEX ROUTE SUCCESS!!!!!")
+    console.log("***********************************************")
+    console.log("***********************************************")
             res.json(products);
 //            res.render('products', {products:products});
         })
         .catch(function(err) {
+            console.log("***********************************************")
+    console.log("IN PRODUCTS INDEX ROUTE FAILURE!!!!!")
+    console.log("***********************************************")
+    console.log("***********************************************")
             console.error(err);
 			res.status(500);
 			res.send(err);
