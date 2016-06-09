@@ -59,15 +59,16 @@ module.exports.addToCart = function (req, res) {
     var totalPrice = 0;
     var product = models.Product.findById(req.params.id)
         .then(function (product) {
+            var message = "You have added " + product.name + " to your cart!";
             var cart = [];
             if (req.signedCookies.cart) {
                 cart = req.signedCookies.cart;
                 
-                //cart.push(product);
                 var contains = false;
                 for (var i = 0; i < cart.length; i++) {
                     if(cart[i].id === product.id) {
-                        contains = true; 
+                        contains = true;
+                        message = product.name + " is already in your cart!";
                     }
                 }
                 if(!contains) {
@@ -81,6 +82,7 @@ module.exports.addToCart = function (req, res) {
                     user: req.user
                     , cart : cart
                     , totalPrice : totalPrice
+                    , message : message
                 });
             } else {
                 cart.push(product);
@@ -97,6 +99,7 @@ module.exports.addToCart = function (req, res) {
                     user: req.user
                     , cart : cart
                     , totalPrice : totalPrice
+                    , message : message
                 });
             }
         });

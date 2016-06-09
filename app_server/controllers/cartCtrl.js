@@ -18,7 +18,7 @@ module.exports.index = function (req, res) {
         res.render('cart', {
             user: req.user
             , message: "Your cart is empty"
-            , totalPrice: totalPrice
+            , totalPrice: totalPrice 
         });
     }
 
@@ -128,7 +128,7 @@ module.exports.confirm = function (req, res) {
             res.clearCookie('cart');
         }
 
-        message = "Thank you for your INTENSE purchase!";
+        message = "Thank you for your INTENSE purchase! We will contact you in 4 to 6 weeks via email to confirm details.";
 
         res.render('purchase', {
             user: req.user
