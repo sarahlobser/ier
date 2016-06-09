@@ -13,6 +13,7 @@ module.exports.index = function (req, res) {
             } else {
                 res.render('cart', {user: req.user, message: "Your cart is empty"});
             }
+
 };
 
 module.exports.removeProduct = function (req, res) {
@@ -119,9 +120,3 @@ module.exports.checkout = function(req, res) {
     } else {
         res.redirect('/login');
     }
-    //check if user is logged in. If not redirect to login page
-    //check the quantity of each item in the cart. Save quantities in array.
-    //if quantity is 0, display error message under item in cart with option to remove item.
-    //if all quantities are good, go to confirm page.
-}
-
