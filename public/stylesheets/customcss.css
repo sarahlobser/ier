@@ -14,3 +14,7 @@
 .cart-item {
     margin: 1em;
 }
+
+.soldout {
+    background-color: red;
+}

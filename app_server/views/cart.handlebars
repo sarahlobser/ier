@@ -1,5 +1,4 @@
 <h2>Your Cart...of INTENSITY</h2>
-{{message}}
 
 <div class="list-group">
     {{#each cart}}
@@ -7,13 +6,21 @@
         <h4 class="pull-left">{{this.name}}</h4>
         <span class="pull-right"><a class="btn btn-success" href="/cart/{{this.id}}">Remove From Cart</a></span>
         <h4 class="text-right">${{this.price}}</h4>
+        <h4>{{errors}}</h4>
     </div>
     {{/each}}
     <div class="list-group-item cart-item">
         <h4 class="pull-left">Total</h4>
         <h4 class="text-right">${{totalPrice}}</h4>
     </div>
+    <div class="list-group-item cart-item">
+        <p>{{message}}</p>
+        <ul>{{#each errors}}
+            <li>{{this}}</li>
+            {{/each}}</ul>
+    </div>
 </div>
-<a class="btn btn-success">Checkout</a>
-<a class="btn btn-success" href="/products/">Continue Shopping</a>
-<a class="btn btn-success" href="/products/cart">Empty Cart</a>
+{{#if cart}}
+<a class="btn btn-success" href="/cart/checkout">Checkout</a>{{/if}}
+<a class="btn btn-success" href="/products/">Continue Shopping</a> {{#if cart}}
+<a class="btn btn-success" href="/products/cart">Empty Cart</a>{{/if}}

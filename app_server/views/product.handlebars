@@ -22,8 +22,11 @@
                 <p>{{product.description}}</p>
             </div>
             <div class="ratings">
+                {{#if product.quantity}}
                 <a class="btn btn-success pull-left" href="/products/cart/{{product.id}}">Add To Cart</a>
                 <p class="pull-right">Quantity Remaining: {{product.quantity}}</p>
+                {{else}}
+                <h4>SOLD OUT</h4> {{/if}}
                 <p>
                     <span class="glyphicon glyphicon-star"></span>
                     <span class="glyphicon glyphicon-star"></span>
