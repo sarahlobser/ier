@@ -1,6 +1,10 @@
 var models = require('../../app_api/models');
 
 var request = require('request');
+var appURI = "http://localhost:3000/";
+if (process.env.PRODUCTION_URL) {
+    appURI = process.env.PRODUCTION_URL;
+}
 
 module.exports.index = function (req, res) {
     var totalPrice = 0;
@@ -108,7 +112,7 @@ module.exports.confirm = function (req, res) {
                 });
 
                 request.put({
-                    url: 'http://localhost:3000/api/products/' + cart[i].id
+                    url: appURI + 'api/products/' + cart[i].id
                     , headers: {
                         'Content-type': 'application/json'
                     }

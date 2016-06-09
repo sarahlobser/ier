@@ -8,11 +8,6 @@ if (process.env.PRODUCTION_URL) {
 }
 
 module.exports.getAll = function (req, res) {
-    console.log("******************************************")
-    console.log("******************************************")
-    console.log("IN GET ALL METHOD!!!!")
-    console.log("******************************************")
-    console.log("******************************************")
     request.get(appURI + 'api/products/', function (error, response, body) {
         if (!error) {
             res.render('products', {
@@ -20,10 +15,7 @@ module.exports.getAll = function (req, res) {
                 , products: JSON.parse(body)
             });
         } else {
-            console.log("******************************************")
-            console.log("IN REQUEST NPM ERROR!!!! ERROR: ")
             console.log(error);
-            console.log("******************************************")
             res.status(500);
             res.json(error);
         }
@@ -44,7 +36,7 @@ module.exports.show = function (req, res) {
 };
 
 module.exports.getCategory = function (req, res) {
-    request.get('http://l   ocalhost:3000/api/products/category/' + req.params.category, function (error, response, body) {
+    request.get(appURI + 'api/products/category/' + req.params.category, function (error, response, body) {
         if (!error) {
             res.render('products', {
                 user: req.user
@@ -57,7 +49,7 @@ module.exports.getCategory = function (req, res) {
 }
 
 module.exports.showEditableProduct = function (req, res) {
-    request.get('http://localhost:3000/api/products/' + req.params.id, function (error, response, body) {
+    request.get(appURI + 'api/products/' + req.params.id, function (error, response, body) {
         if (!error) {
             res.render('employeeProduct', {
                 user: req.user
@@ -133,7 +125,7 @@ module.exports.emptyCart = function (req, res) {
 };
 
  module.exports.editProduct = function (req, res) {
-     request.get('http://localhost:3000/api/products/' + req.params.id, function (error, response, body) {
+     request.get(appURI + 'api/products/' + req.params.id, function (error, response, body) {
          if (!error) {
              res.render('editProduct', {
                  user: req.user
@@ -160,7 +152,7 @@ module.exports.emptyCart = function (req, res) {
          });
         console.log(productToUpdate);
      request.put({
-         url : 'http://localhost:3000/api/products/' + req.params.id,
+         url : appURI + 'api/products/' + req.params.id,
          headers : {'Content-type' : 'application/json'},
          body : productToUpdate
      }, function(error, response, body) {

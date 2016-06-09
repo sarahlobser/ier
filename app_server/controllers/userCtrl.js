@@ -2,9 +2,13 @@ var models = require('../../app_api/models');
 //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 var request = require('request');
+var appURI = "http://localhost:3000/";
+if (process.env.PRODUCTION_URL) {
+    appURI = process.env.PRODUCTION_URL;
+}
 
 module.exports.view = function (req, res) {
-    request.get('http://localhost:3000/api/users/' + req.params.id, function (error, response, body) {
+    request.get(appURI + 'api/users/' + req.params.id, function (error, response, body) {
         if (!error) {
             console.log("in view profile");
             res.render('profile', {
@@ -25,7 +29,7 @@ module.exports.update = function (req, res) {
             password : req.body.password
         });
     request.put({
-        url : 'http://localhost:3000/api/users/update/',
+        url : appURI + 'api/users/update/',
         headers : {'Content-type' : 'application/json'},
         body : userToUpdate
     }, function(error, response, body) {
@@ -37,30 +41,3 @@ module.exports.update = function (req, res) {
         }
     });
 };
-                
-
-//module.exports.update = function(req, res) {
-//	var xhr = new XMLHttpRequest();
-//    
-//    var jsonString = JSON.stringify(req.body);
-//    console.log(jsonString);
-//
-//	xhr.open('POST', 'http://localhost:3000/api/users/update', true);
-//    
-//    xhr.setRequestHeader('Content-type', 'application/json');
-//
-//	xhr.onreadystatechange = function() {
-//		if (xhr.readyState === 4 && xhr.status < 400) {
-//			console.log(xhr.status);
-//            console.log(xhr.responseText);
-//			//console.log(data);
-//		}
-//
-//		if (xhr.readyState === 4 && xhr.status >= 400) {
-//			console.log(xhr.status);
-//			console.log(xhr.responseText);
-//		}
-//	};
-//
-//	xhr.send(jsonString);
-//};
