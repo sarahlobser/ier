@@ -4,6 +4,11 @@ var models = require('../../app_api/models');
 var request = require('request');
 
 module.exports.getAll = function (req, res) {
+    console.log("******************************************")
+    console.log("******************************************")
+    console.log("IN GET ALL METHOD!!!!")
+    console.log("******************************************")
+    console.log("******************************************")
     request.get('http://localhost:3000/api/products/', function (error, response, body) {
         if (!error) {
             res.render('products', {
