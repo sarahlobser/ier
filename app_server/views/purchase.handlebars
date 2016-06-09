@@ -1,6 +1,7 @@
 <h2>Confirm your INTENSE purchase</h2>
 
 <div class="list-group">
+    {{#if cart}}
     <div class="list-group-item cart-item">
         <table class="table text-left">
             <tr>
@@ -22,6 +23,7 @@
             </tr>
         </table>
     </div>
+    {{/if}}
     <div class="list-group-item cart-item">
         <p>{{message}}</p>
     </div>
