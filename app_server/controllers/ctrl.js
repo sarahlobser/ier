@@ -2,6 +2,10 @@
 var models = require('../../app_api/models');
 
 var request = require('request');
+var appURI = "http://localhost:3000";
+if (process.env.PRODUCTION_URL) {
+    appURI = process.env.PRODUCTION_URL;
+}
 
 module.exports.getAll = function (req, res) {
     console.log("******************************************")
@@ -9,20 +13,25 @@ module.exports.getAll = function (req, res) {
     console.log("IN GET ALL METHOD!!!!")
     console.log("******************************************")
     console.log("******************************************")
-    request.get('http://localhost:3000/api/products/', function (error, response, body) {
+    request.get(appURI + '/api/products/', function (error, response, body) {
         if (!error) {
             res.render('products', {
                 user: req.user
                 , products: JSON.parse(body)
             });
         } else {
-            res.sendStatus(500);
+            console.log("******************************************")
+            console.log("IN REQUEST NPM ERROR!!!! ERROR: ")
+            console.log(error);
+            console.log("******************************************")
+            res.status(500);
+            res.json(error);
         }
     })
 };
 
 module.exports.show = function (req, res) {
-    request.get('http://localhost:3000/api/products/' + req.params.id, function (error, response, body) {
+    request.get(appUri + '/api/products/' + req.params.id, function (error, response, body) {
         if (!error) {
             res.render('product', {
                 user: req.user
