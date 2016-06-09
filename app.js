@@ -50,6 +50,7 @@ app.use('/employees', require('./app_api/routes/employeeRoutes'));
 //app.use('/profile', require('./app_server/routes/userRoutes'));
 app.use('/cart', require('./app_server/routes/cartRoutes'));
 app.use('/contact', require('./app_server/routes/contactRoutes'));
+app.use('/answer', require('./app_server/routes/answerRoutes'));
 
 app.use('/api/products', require('./app_api/routes/productRoutes'));
 
