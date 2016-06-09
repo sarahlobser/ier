@@ -8,13 +8,13 @@
                 <th>Brand</th>
                 <th>Price</th>
             </tr>
-        {{#each cart}}
+            {{#each cart}}
             <tr>
                 <td>{{this.name}}</td>
                 <td>{{this.brand}}</td>
                 <td>{{this.price}}</td>
             </tr>
-        {{/each}}
+            {{/each}}
             <tr>
                 <th>Total Price</th>
                 <th></th>
@@ -26,6 +26,7 @@
         <p>{{message}}</p>
     </div>
 </div>
-<a class="btn btn-success" href="/cart/confirm">Confirm Purchase</a>
-<a class="btn btn-success" href="/products/">Continue Shopping</a>
-<a class="btn btn-success" href="/products/cart">Cancel Purchase</a>
+{{#if totalPrice}}
+<a class="btn btn-success" href="/cart/confirm">Confirm Purchase</a> {{/if}}
+<a class="btn btn-success" href="/products/">Continue Shopping</a> {{#if totalPrice}}
+<a class="btn btn-success" href="/products/cart">Cancel Purchase</a> {{/if}}

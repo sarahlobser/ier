@@ -16,10 +16,11 @@
     <div class="list-group-item cart-item">
         <p>{{message}}</p>
         <ul>{{#each errors}}
-        <li>{{this}}</li>
-        {{/each}}</ul>
+            <li>{{this}}</li>
+            {{/each}}</ul>
     </div>
 </div>
-<a class="btn btn-success" href="/cart/checkout">Checkout</a>
-<a class="btn btn-success" href="/products/">Continue Shopping</a>
-<a class="btn btn-success" href="/products/cart">Empty Cart</a>
+{{#if cart}}
+<a class="btn btn-success" href="/cart/checkout">Checkout</a>{{/if}}
+<a class="btn btn-success" href="/products/">Continue Shopping</a> {{#if cart}}
+<a class="btn btn-success" href="/products/cart">Empty Cart</a>{{/if}}
