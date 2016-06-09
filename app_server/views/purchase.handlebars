@@ -1,0 +1,31 @@
+<h2>Confirm your INTENSE purchase</h2>
+
+<div class="list-group">
+    <div class="list-group-item cart-item">
+        <table class="table text-left">
+            <tr>
+                <th>Experience</th>
+                <th>Brand</th>
+                <th>Price</th>
+            </tr>
+        {{#each cart}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.brand}}</td>
+                <td>{{this.price}}</td>
+            </tr>
+        {{/each}}
+            <tr>
+                <th>Total Price</th>
+                <th></th>
+                <th>{{totalPrice}}</th>
+            </tr>
+        </table>
+    </div>
+    <div class="list-group-item cart-item">
+        <p>{{message}}</p>
+    </div>
+</div>
+<a class="btn btn-success" href="/cart/checkout">Confirm Purchase</a>
+<a class="btn btn-success" href="/products/">Continue Shopping</a>
+<a class="btn btn-success" href="/products/cart">Cancel Purchase</a>
