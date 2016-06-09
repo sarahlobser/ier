@@ -1,28 +1,13 @@
-<!--<div class="row">
-
-    <div class="col-md-3">
-        <p class="lead">Edit Page</p>
-        <div class="list-group">
-            <a href="/products/category/skydiving" class="list-group-item">Skydiving</a>
-            <a href="/products/category/mountaineering" class="list-group-item">Mountaineering</a>
-            <a href="/products/category/heli-skiing" class="list-group-item">Heli-Skiing</a>
-            <a href="/products/category/diving" class="list-group-item">Diving</a>
-            <a href="/products/category/downhill biking" class="list-group-item">Downhill Biking</a>
-        </div>
-    </div>-->
-
-
-
 <form action='/products/update/{{product.id}}' method=POST>
             <!--<p class="pull-center"><img class="img-responsive" src="http://placehold.it/800x300" alt=""><p><br>-->
-            <p class="pull-center"><img class="center-block" src="http://placehold.it/800x300" alt=""></p>
+            <p class="pull-center"><img class="center-block" src="/images/{{product.category}}{{product.id}}.jpg" style="width:800px; height:300px" alt=""></p>
                 <input type="hidden" name="id" value="{{product.id}}">
                 <input type="hidden" name="category" value="{{product.category}}">
                 Product Price:<br>
                 <h4><p class="pull-center"> <input type="text" name="price" value={{product.price}}></p></h4>
                 <!--<h4 class="pull-right">${{product.price}}</h4>-->
                 Product Description:<br>
-                <textarea class="pull-center" rows="15" cols="100" name="description">{{product.description}}</textarea><br><br>
+                <textarea class="pull-center" rows="30" cols="100" name="description" style="height: 200px">{{product.description}}</textarea><br><br>
                 Product Brand:<br>
                 <h4><textarea class="pull-center" rows="1" columns="1" name="brand">{{product.brand}}</textarea></h4>
                 <input type="hidden" name="rating" value="{{product.rating}}">
@@ -32,33 +17,7 @@
                 <h4><p class="pull-center"><input type="text" name="quantity" value={{product.quantity}}></p></h4>
 
                 <button type="submit" id="editProductButton">Update</button>
-                <!--<a class="btn btn-success">Update</a>-->
 </form>
-
-
-            <!--
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">10 days ago</span>
-                            <p>This product was great in terms of quality. I would definitely buy another!</p>
-                        </div>
-                    </div>
-
-                    <hr>
--->
-
-            <!--                </div>-->
-
-
-<!-- /.container -->
 
 <div class="container">
 
