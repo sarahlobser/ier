@@ -60,20 +60,39 @@ module.exports.checkout = function (req, res) {
 
             for (var i = 0; i < cart.length; i++) {
                 totalPrice += cart[i].price;
-                //                request.get('http://localhost:3000/api/products/' + cart[i].id, function (error, response, body) {
-                //                if (!error) {
-                //                    var product = JSON.parse(body);
-                //                    
-                //                    if(product.quantity == 0) {
-                //                        console.log(product);
-                //                        errors.push(product.name + " is sold out!");
-                //                        
-                //                    }
-                //                } else {
-                //                    response.sendStatus(500);
-                //                }
-                //                  
-                //                });
+            }
+
+            message = "You have " + cart.length + " items in your cart.";
+            res.cookie('cart', cart, {
+                signed: true
+            });
+            res.render('purchase', {
+                user: req.user
+                , cart: cart
+                , totalPrice: totalPrice
+                , message: message
+            });
+
+        } else {
+            //the cart is empty
+        }
+
+    } else {
+        res.redirect('/login');
+    }
+};
+
+module.exports.confirm = function (req, res) {
+    if (req.user) {
+        if (req.signedCookies.cart) {
+            var totalPrice = 0;
+            var errors = [];
+            var soldOut;
+            var cart = req.signedCookies.cart;
+
+            for (var i = 0; i < cart.length; i++) {
+                totalPrice += cart[i].price;
+                cart[i].quantity = ((cart[i].quantity > 0) ? cart[i].quantity - 1 : 0);
 
                 var productToUpdate = JSON.stringify({
                     id: cart[i].id
@@ -83,7 +102,7 @@ module.exports.checkout = function (req, res) {
                     , rating: Number(cart[i].rating)
                     , brand: cart[i].brand
                     , name: cart[i].name
-                    , quantity: ((cart[i].quantity > 0) ? cart[i].quantity - 1 : 0)
+                    , quantity: cart[i].quantity
                 });
 
                 request.put({
@@ -97,45 +116,25 @@ module.exports.checkout = function (req, res) {
                         //   res.redirect('/products/' + req.params.id);
                     } else {
                         console.log(error);
-                        //res.redirect('/products');
                     }
                 });
 
-
-
-
-
-
-
-
-                console.log(errors);
-                console.log(errors.length);
             }
-            message = "You have " + cart.length + " items in your cart.";
-            console.log("outside loop");
-            console.log(errors);
-            console.log(errors.length);
-            if (cart.soldOut) {
-                message = "Your purchase cannot be completed. Please modify your selection.";
-                console.log(message);
-                res.render('cart', {
-                    cart: cart
-                    , message: message
-                    , errors: errors
-                    , totalPrice: totalPrice
-                });
-            } else {
-                res.render('purchase', {
-                    cart: cart
-                    , totalPrice: totalPrice
-                    , message: message
-                });
+            while (cart.length > 0) {
+                cart.pop();
             }
-        } else {
-            //the cart is empty
+            res.clearCookie('cart');
         }
+
+        message = "Thank you for your INTENSE purchase!";
+
+        res.render('purchase', {
+            user: req.user
+            , message: message
+        });
 
     } else {
         res.redirect('/login');
     }
-};
+
+}
