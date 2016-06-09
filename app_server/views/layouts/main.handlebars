@@ -60,8 +60,8 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    
-                    
+
+
                     {{#if user}}
                     <li>
                         <a class="page-scroll" href="/users/{{user.email}}">
@@ -92,10 +92,13 @@
                     <li>
                         <a class="page-scroll" href="/employees">Our Team</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                    
+                    <script>
+                        if (location.pathname.length == 1) {
+                            document.write('<li><a class="page-scroll" href="#contact">Contact</a></li>')
+                        } else {
+                            document.write('<li><a class="page-scroll" href="/contact">Contact</a></li>')
+                        }
+                    </script>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
