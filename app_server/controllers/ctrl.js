@@ -63,8 +63,15 @@ module.exports.addToCart = function (req, res) {
             if (req.signedCookies.cart) {
                 cart = req.signedCookies.cart;
                 
-                cart.push(product);
+                //cart.push(product);
+                var contains = false;
                 for (var i = 0; i < cart.length; i++) {
+                    if(cart[i].id === product.id) {
+                        contains = true; 
+                    }
+                }
+                if(!contains) {
+                    cart.push(product);
                     totalPrice += cart[i].price;
                 }
                 res.cookie('cart', cart, {

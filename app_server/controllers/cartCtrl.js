@@ -3,8 +3,8 @@ var models = require('../../app_api/models');
 var request = require('request');
 
 module.exports.index = function (req, res) {
+    var totalPrice = 0;
     if (req.signedCookies.cart) {
-        var totalPrice = 0;
         var cart = req.signedCookies.cart;
         for (var i = 0; i < cart.length; i++) {
             totalPrice += cart[i].price;
@@ -18,6 +18,7 @@ module.exports.index = function (req, res) {
         res.render('cart', {
             user: req.user
             , message: "Your cart is empty"
+            , totalPrice: totalPrice
         });
     }
 
@@ -51,9 +52,10 @@ module.exports.removeProduct = function (req, res) {
 };
 
 module.exports.checkout = function (req, res) {
+    var totalPrice = 0;
     if (req.user) {
         if (req.signedCookies.cart) {
-            var totalPrice = 0;
+            totalPrice = 0;
             var errors = [];
             var soldOut;
             var cart = req.signedCookies.cart;
